@@ -5,12 +5,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_IMPORT = 2;
 
+    private Bitmap imageBitmap;
     private ImageView imageView;
 
     @Override
@@ -33,10 +37,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imageView = (ImageView) findViewById(R.id.image_view);
-        imageView.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view) {
-                selectImageArea(view);
-            }});
+
+        imageView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                System.out.println("Touch coordinates : " +
+                        String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
+                return true;
+            }
+        });
     }
 
     @Override
@@ -54,7 +63,14 @@ public class MainActivity extends AppCompatActivity {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+            imageBitmap = BitmapFactory.decodeFile(picturePath);
+            imageView.setMaxWidth(imageBitmap.getScaledWidth(metrics));
+            imageView.setMaxHeight(imageBitmap.getScaledHeight(metrics));
+
+            imageView.setImageBitmap(imageBitmap);
         }
     }
 
