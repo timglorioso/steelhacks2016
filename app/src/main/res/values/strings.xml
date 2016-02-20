@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Colorblind</string>
+    <string name="button_import">Import picture</string>
+</resources>
