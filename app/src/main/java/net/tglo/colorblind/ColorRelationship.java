@@ -1,3 +1,5 @@
+package net.tglo.colorblind;
+
 public class ColorRelationship
 {	
 	public static float[] getComplement(float[] color)
