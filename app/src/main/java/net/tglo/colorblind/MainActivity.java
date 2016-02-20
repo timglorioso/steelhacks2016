@@ -12,18 +12,31 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final int REQUEST_IMAGE_IMPORT = 1;
+    // storage permissions for 23+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+    private static final int REQUEST_IMAGE_IMPORT = 2;
+
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        verifyStoragePermissions(this);
+
+        imageView = (ImageView) findViewById(R.id.image_view);
+        imageView.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                selectImageArea(view);
+            }});
     }
 
     @Override
@@ -41,22 +54,16 @@ public class MainActivity extends AppCompatActivity {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            ImageView imageView = (ImageView) findViewById(R.id.image_view);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
         }
     }
 
     public void dispatchImportPictureIntent(View view) {
+        // ask for permission if we don't have it
+        verifyStoragePermissions(this);
         Intent importPictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(importPictureIntent, REQUEST_IMAGE_IMPORT);
     }
-
-    // Storage Permissions
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
 
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
@@ -70,5 +77,9 @@ public class MainActivity extends AppCompatActivity {
                     REQUEST_EXTERNAL_STORAGE
             );
         }
+    }
+
+    public void selectImageArea(View view) {
+        System.out.println("hi");
     }
 }
