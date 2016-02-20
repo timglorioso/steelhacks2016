@@ -13,5 +13,5 @@
 
 ## Input/Output
 
-in: any number of images, one of which is the control
+in: any number of images, one of which is the control  
 out: a list of images ranked by percentage of match
