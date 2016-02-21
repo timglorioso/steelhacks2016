@@ -88,7 +88,7 @@ public class ColorRelationship
 		
 		for(int i = 0; i < 3; i++)
 		{
-			square[i][0] = color[0] + (i * 90);
+			square[i][0] = color[0] + ((i + 1) * 90);
 			if(square[i][0] > 360.0)
 			{
 				square[i][0] = square[i][0] - (float) 360.0;
