@@ -46,11 +46,8 @@ public class SelectAreaActivity extends AppCompatActivity {
                 System.out.println("Touch coordinates : " +
                         String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
                 baseColor = imageBitmap.getPixel((int) event.getX(), (int) event.getY());
-<<<<<<< HEAD
                 //baseColor = getAverageOfRegion((int) event.getX(), (int) event.getY());
-=======
                 acceptAreaButton.setEnabled(true);
->>>>>>> 30b2013893c66b15785e6cb8295545665a694282
                 return true;
             }
         });
