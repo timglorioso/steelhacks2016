@@ -30,15 +30,15 @@ public class SelectAreaActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         imageView = (ImageView) findViewById(R.id.image_view);
-
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
         imageBitmap = BitmapFactory.decodeFile(getIntent().getStringExtra(MainActivity.EXTRA_MESSAGE));
         imageView.setMaxWidth(imageBitmap.getScaledWidth(metrics));
         imageView.setMaxHeight(imageBitmap.getScaledHeight(metrics));
-
         imageView.setImageBitmap(imageBitmap);
+
+        final Button acceptAreaButton = (Button) findViewById(R.id.accept_button);
+        acceptAreaButton.setEnabled(false);
 
         imageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -46,12 +46,15 @@ public class SelectAreaActivity extends AppCompatActivity {
                 System.out.println("Touch coordinates : " +
                         String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
                 baseColor = imageBitmap.getPixel((int) event.getX(), (int) event.getY());
+<<<<<<< HEAD
                 //baseColor = getAverageOfRegion((int) event.getX(), (int) event.getY());
+=======
+                acceptAreaButton.setEnabled(true);
+>>>>>>> 30b2013893c66b15785e6cb8295545665a694282
                 return true;
             }
         });
 
-        final Button acceptAreaButton = (Button) findViewById(R.id.accept_button);
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
