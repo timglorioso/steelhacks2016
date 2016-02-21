@@ -30,7 +30,7 @@ public class SelectAreaActivity extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        imageBitmap = BitmapFactory.decodeFile(getIntent().getStringExtra("EXTRA_MESSAGE"));
+        imageBitmap = BitmapFactory.decodeFile(getIntent().getStringExtra(MainActivity.EXTRA_MESSAGE));
         imageView.setMaxWidth(imageBitmap.getScaledWidth(metrics));
         imageView.setMaxHeight(imageBitmap.getScaledHeight(metrics));
 
