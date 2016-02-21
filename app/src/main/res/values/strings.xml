@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Colorblind</string>
     <string name="button_import">Import picture</string>
+    <string name="title_activity_show_matches">ShowMatches</string>
 </resources>

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Bitmap imageBitmap;
     private ImageView imageView;
+    private int baseColor = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 System.out.println("Touch coordinates : " +
                         String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
+                baseColor = imageBitmap.getPixel(event.getX(),event.getY());
                 return true;
             }
         });
@@ -95,7 +97,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void selectImageArea(View view) {
-        System.out.println("hi");
-    }
 }
