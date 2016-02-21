@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 
 public class ShowMatches extends AppCompatActivity {
 
@@ -51,6 +52,14 @@ public class ShowMatches extends AppCompatActivity {
         square0Color = squareColors[0];
         square1Color = squareColors[1];
         square2Color = squareColors[2];
+    }
+
+    private void drawColors2() {
+        LinearLayout complementaryGroup = (LinearLayout) findViewById(R.id.comp_swatches);
+        LinearLayout splitComplementaryGroup = (LinearLayout) findViewById(R.id.splitcomp_swatches);
+        LinearLayout triadGroup = (LinearLayout) findViewById(R.id.triad_swatches);
+        LinearLayout analogousGroup = (LinearLayout) findViewById(R.id.anal_swatches);
+        LinearLayout squareGroup = (LinearLayout) findViewById(R.id.square_swatches);
     }
 
     private void drawColors()
