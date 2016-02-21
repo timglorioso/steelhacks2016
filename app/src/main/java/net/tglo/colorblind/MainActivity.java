@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 System.out.println("Touch coordinates : " +
                         String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
-                baseColor = imageBitmap.getPixel(event.getX(),event.getY());
+                baseColor = imageBitmap.getPixel((int) event.getX(), (int) event.getY());
                 return true;
             }
         });
