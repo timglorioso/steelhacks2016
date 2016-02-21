@@ -51,6 +51,7 @@ public class SelectAreaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent showMatchesIntent = new Intent(getApplicationContext(), ShowMatches.class);
+                showMatchesIntent.putExtra("colorInt", baseColor);
                 startActivity(showMatchesIntent);
             }
         };

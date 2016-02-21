@@ -9,7 +9,7 @@ import android.view.View;
 
 public class ShowMatches extends AppCompatActivity {
 
-    private int baseColor = 0;
+    private int baseColor;
     private int complementColor;
     private int split0Color;
     private int split1Color;
@@ -28,15 +28,7 @@ public class ShowMatches extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        baseColor = getIntent().getIntExtra("colorInt", 0);
         getColors();
     }
 
