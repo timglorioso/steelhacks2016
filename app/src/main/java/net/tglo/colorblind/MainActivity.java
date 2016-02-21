@@ -28,26 +28,12 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_IMPORT = 2;
 
-    private Bitmap imageBitmap;
-    private ImageView imageView;
-    private int baseColor = 0;
+    public final static String EXTRA_MESSAGE = "net.tglo.colorblind.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        imageView = (ImageView) findViewById(R.id.image_view);
-
-        imageView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                System.out.println("Touch coordinates : " +
-                        String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
-                baseColor = imageBitmap.getPixel((int) event.getX(), (int) event.getY());
-                return true;
-            }
-        });
     }
 
     @Override
@@ -65,14 +51,9 @@ public class MainActivity extends AppCompatActivity {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            DisplayMetrics metrics = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-            imageBitmap = BitmapFactory.decodeFile(picturePath);
-            imageView.setMaxWidth(imageBitmap.getScaledWidth(metrics));
-            imageView.setMaxHeight(imageBitmap.getScaledHeight(metrics));
-
-            imageView.setImageBitmap(imageBitmap);
+            Intent selectAreaIntent = new Intent(this, SelectAreaActivity.class);
+            selectAreaIntent.putExtra(EXTRA_MESSAGE, picturePath);
+            startActivity(selectAreaIntent);
         }
     }
 
