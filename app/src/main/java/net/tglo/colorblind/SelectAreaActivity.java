@@ -3,6 +3,10 @@ package net.tglo.colorblind;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -42,7 +46,11 @@ public class SelectAreaActivity extends AppCompatActivity {
                 System.out.println("Touch coordinates : " +
                         String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
                 baseColor = imageBitmap.getPixel((int) event.getX(), (int) event.getY());
+<<<<<<< HEAD
+                //baseColor = getAverageOfRegion((int) event.getX(), (int) event.getY());
+=======
                 acceptAreaButton.setEnabled(true);
+>>>>>>> 30b2013893c66b15785e6cb8295545665a694282
                 return true;
             }
         });
@@ -56,5 +64,32 @@ public class SelectAreaActivity extends AppCompatActivity {
             }
         };
         acceptAreaButton.setOnClickListener(clickListener);
+    }
+
+    private int getAverageOfRegion(int x, int y)
+    {
+        int[] sum = new int[4];
+
+        for(int X = x - 1; X <= (x + 1); X++)
+        {
+            for(int Y = y - 1; Y <= (y + 1); Y++)
+            {
+                sum[0] += Color.alpha(imageBitmap.getPixel(X, Y));
+                sum[1] += Color.red(imageBitmap.getPixel(X, Y));
+                sum[2] += Color.green(imageBitmap.getPixel(X, Y));
+                sum[3] += Color.blue(imageBitmap.getPixel(X, Y));
+            }
+        }
+
+        for(int i = 0; i < 4; i++)
+        {
+            sum[i] = sum[i] / (9);
+        }
+
+        System.out.println("A,R,G,B: " + sum[0] + "," + sum[1] + "," + sum[2] + "," + sum[3]);
+
+        int color = Color.argb(sum[0], sum[1], sum[2], sum[3]);
+
+        return color;
     }
 }

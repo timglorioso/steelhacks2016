@@ -70,6 +70,7 @@ public class ColorMatching {
         {
             square0HSL[i] = squareHSLs[0][i];
             square1HSL[i] = squareHSLs[1][i];
+            square2HSL[i] = squareHSLs[2][i];
         }
         int[] squareInt = new int[3];
         squareInt[0] = ColorUtils.HSLToColor(square0HSL);

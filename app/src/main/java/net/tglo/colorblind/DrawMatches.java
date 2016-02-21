@@ -1,37 +1,32 @@
 package net.tglo.colorblind;
 
-import android.graphics.Bitmap;
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-<<<<<<< HEAD
-import android.widget.LinearLayout;
-=======
-import android.widget.ImageView;
->>>>>>> 3dadbe149ca287a694a70a73677487d62ced3ebc
 
-public class ShowMatches extends AppCompatActivity {
-    DrawMatches drawView;
+/**
+ * Created by ben on 2/20/16.
+ */
+public class DrawMatches extends View {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_matches);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    private int baseColor;
+    private int complementColor;
+    private int split0Color;
+    private int split1Color;
+    private int triad0Color;
+    private int triad1Color;
+    private int analogous0Color;
+    private int analogous1Color;
+    private int square0Color;
+    private int square1Color;
+    private int square2Color;
 
-<<<<<<< HEAD
-        baseColor = getIntent().getIntExtra("colorInt", 0);
-        getColors();
-        drawColors();
+    public DrawMatches(Context context, int color) {
+        super(context);
+        baseColor = color;
     }
-
     private void getColors()
     {
         complementColor = ColorMatching.getComplement(baseColor);
@@ -50,19 +45,16 @@ public class ShowMatches extends AppCompatActivity {
         square2Color = squareColors[2];
     }
 
-    private void drawColors2() {
-        LinearLayout complementaryGroup = (LinearLayout) findViewById(R.id.comp_swatches);
-        LinearLayout splitComplementaryGroup = (LinearLayout) findViewById(R.id.splitcomp_swatches);
-        LinearLayout triadGroup = (LinearLayout) findViewById(R.id.triad_swatches);
-        LinearLayout analogousGroup = (LinearLayout) findViewById(R.id.anal_swatches);
-        LinearLayout squareGroup = (LinearLayout) findViewById(R.id.square_swatches);
+    @Override
+    public void onDraw(Canvas canvas) {
+        getColors();
+        drawColors(canvas);
     }
 
-    private void drawColors()
+    private void drawColors(Canvas canvas)
     {
-        Canvas canvas = new Canvas();
-        int y = canvas.getHeight();
-        int x = canvas.getWidth();
+        int y = 500;
+        int x = 1000;
         int titleHeight = 50;
         int colorHeight = y - (5 * titleHeight);
 
@@ -94,6 +86,11 @@ public class ShowMatches extends AppCompatActivity {
         Paint square2Paint = new Paint();
         square2Paint.setColor(square2Color);
 
+        Paint ink = new Paint();
+        ink.setColor(Color.BLACK);
+        ink.setTextSize(titleHeight);
+
+        canvas.drawText("Complement", 0, 10, 0, titleHeight, ink);
         canvas.drawRect(0, titleHeight, x * (float) .5, titleHeight + colorHeight, basePaint);
         canvas.drawRect((float) .5 * x, titleHeight, x, titleHeight + colorHeight, complementPaint);
 
@@ -108,11 +105,11 @@ public class ShowMatches extends AppCompatActivity {
         canvas.drawRect(0, 4 * titleHeight +  3 * colorHeight, (float) (1.0/3.0) * x, (4 * titleHeight) + (4 * colorHeight), basePaint);
         canvas.drawRect((float) (1.0/3.0) * x, 4 * titleHeight + 3 * colorHeight, (float) (2.0/3.0) * x, (4 * titleHeight) + (4 * colorHeight), analogous0Paint);
         canvas.drawRect((float) (2.0/3.0) * x, 4 * titleHeight + 3 * colorHeight, x, (4 * titleHeight) + (4 * colorHeight), analogous1Paint);
-=======
-        int baseColor = getIntent().getIntExtra("colorInt", 0);
->>>>>>> 3dadbe149ca287a694a70a73677487d62ced3ebc
 
-        drawView = new DrawMatches(this, baseColor);
-        setContentView(drawView);
+        canvas.drawRect(0, 5 * titleHeight + 4 * colorHeight, (float) .25 * x, (5 * titleHeight) + (5 * colorHeight), basePaint);
+        canvas.drawRect((float) .25 * x, 5 * titleHeight + 4 * colorHeight, (float) .5 * x, (5 * titleHeight) + (5 * colorHeight), square1Paint);
+        canvas.drawRect((float) .5 * x, 5 * titleHeight + 4 * colorHeight, (float) .75 * x, (5 * titleHeight) + (5 * colorHeight), square0Paint);
+        canvas.drawRect((float) .75 * x, 5 * titleHeight + 4 * colorHeight, x, (5 * titleHeight) + (5 * colorHeight), square2Paint);
     }
+
 }
