@@ -94,18 +94,22 @@ public class DrawMatches extends View {
         canvas.drawRect(0, titleHeight, x * (float) .5, titleHeight + colorHeight, basePaint);
         canvas.drawRect((float) .5 * x, titleHeight, x, titleHeight + colorHeight, complementPaint);
 
-        canvas.drawRect(0, 2 * titleHeight + colorHeight, (float) (1.0/3.0) * x, (2 * titleHeight) + (2 * colorHeight), basePaint);
+        canvas.drawText("Split Complement", 0, 16, 0, 2 * titleHeight + colorHeight, ink);
+        canvas.drawRect(0, 2 * titleHeight + colorHeight, (float) (1.0 / 3.0) * x, (2 * titleHeight) + (2 * colorHeight), basePaint);
         canvas.drawRect((float) (1.0/3.0) * x, 2 * titleHeight + colorHeight, (float) (2.0/3.0) * x, (2 * titleHeight) + (2 * colorHeight), split0Paint);
-        canvas.drawRect((float) (2.0/3.0) * x, 2 * titleHeight + colorHeight, x, (2 * titleHeight) + (2 * colorHeight), split1Paint);
+        canvas.drawRect((float) (2.0 / 3.0) * x, 2 * titleHeight + colorHeight, x, (2 * titleHeight) + (2 * colorHeight), split1Paint);
 
-        canvas.drawRect(0, 3 * titleHeight +  2 * colorHeight, (float) (1.0/3.0) * x, (3 * titleHeight) + (3 * colorHeight), basePaint);
+        canvas.drawText("Triad", 0, 5, 0, 3 * titleHeight + 2 * colorHeight, ink);
+        canvas.drawRect(0, 3 * titleHeight + 2 * colorHeight, (float) (1.0 / 3.0) * x, (3 * titleHeight) + (3 * colorHeight), basePaint);
         canvas.drawRect((float) (1.0/3.0) * x, 3 * titleHeight + 2 * colorHeight, (float) (2.0/3.0) * x, (3 * titleHeight) + (3 * colorHeight), triad0Paint);
         canvas.drawRect((float) (2.0/3.0) * x, 3 * titleHeight + 2 * colorHeight, x, (3 * titleHeight) + (3 * colorHeight), triad1Paint);
 
+        canvas.drawText("Analogous", 0, 9, 0, 4 * titleHeight + 3 *colorHeight, ink);
         canvas.drawRect(0, 4 * titleHeight +  3 * colorHeight, (float) (1.0/3.0) * x, (4 * titleHeight) + (4 * colorHeight), basePaint);
         canvas.drawRect((float) (1.0/3.0) * x, 4 * titleHeight + 3 * colorHeight, (float) (2.0/3.0) * x, (4 * titleHeight) + (4 * colorHeight), analogous0Paint);
         canvas.drawRect((float) (2.0/3.0) * x, 4 * titleHeight + 3 * colorHeight, x, (4 * titleHeight) + (4 * colorHeight), analogous1Paint);
 
+        canvas.drawText("Square", 0, 6, 0, 5 * titleHeight + 4 *colorHeight, ink);
         canvas.drawRect(0, 5 * titleHeight + 4 * colorHeight, (float) .25 * x, (5 * titleHeight) + (5 * colorHeight), basePaint);
         canvas.drawRect((float) .25 * x, 5 * titleHeight + 4 * colorHeight, (float) .5 * x, (5 * titleHeight) + (5 * colorHeight), square1Paint);
         canvas.drawRect((float) .5 * x, 5 * titleHeight + 4 * colorHeight, (float) .75 * x, (5 * titleHeight) + (5 * colorHeight), square0Paint);
