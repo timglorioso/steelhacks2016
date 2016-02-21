@@ -75,10 +75,10 @@ public class ShowMatches extends AppCompatActivity {
         Paint triad0Paint = new Paint();
         triad0Paint.setColor(triad0Color);
         Paint triad1Paint = new Paint();
-        triad1Paint.setColor(triad1Color)
+        triad1Paint.setColor(triad1Color);
 
         Paint analogous0Paint = new Paint();
-        analogous0Paint.setColor(analogous0Color)
+        analogous0Paint.setColor(analogous0Color);
         Paint analogous1Paint = new Paint();
         analogous1Paint.setColor(analogous1Color);
 
@@ -90,7 +90,7 @@ public class ShowMatches extends AppCompatActivity {
         square2Paint.setColor(square2Color);
 
         canvas.drawRect(0, titleHeight, x * (float) .5, titleHeight + colorHeight, basePaint);
-        canvas.drawRect((float) * .5, titleHeight, x, titleHeight + colorHeight, complementPaint);
+        canvas.drawRect((float) .5 * x, titleHeight, x, titleHeight + colorHeight, complementPaint);
 
         canvas.drawRect(0, 2 * titleHeight + colorHeight, (float) (1.0/3.0) * x, (2 * titleHeight) + (2 * colorHeight), basePaint);
         canvas.drawRect((float) (1.0/3.0) * x, 2 * titleHeight + colorHeight, (float) (2.0/3.0) * x, (2 * titleHeight) + (2 * colorHeight), split0Paint);
@@ -105,8 +105,8 @@ public class ShowMatches extends AppCompatActivity {
         canvas.drawRect((float) (2.0/3.0) * x, 4 * titleHeight + 3 * colorHeight, x, (4 * titleHeight) + (4 * colorHeight), analogous1Paint);
 
         canvas.drawRect(0, 5 * titleHeight + 4 * colorHeight, (float) .25 * x, y, basePaint);
-        canvas.drawRect((float) .25 * x, 5 * titleHeight + 4 * color, (float) .5 * x, y, square1Paint);
-        canvas.drawRect((float) .5 * x, 5 * titleHeight + 4 * color, (float) .75 * x, y, square0Paint);
-        canvas.drawRect((float) .75 * x, 5 * titleHeight + 4 * color, x, y, square2Paint);
+        canvas.drawRect((float) .25 * x, 5 * titleHeight + 4 * colorHeight, (float) .5 * x, y, square1Paint);
+        canvas.drawRect((float) .5 * x, 5 * titleHeight + 4 * colorHeight, (float) .75 * x, y, square0Paint);
+        canvas.drawRect((float) .75 * x, 5 * titleHeight + 4 * colorHeight, x, y, square2Paint);
     }
 }
