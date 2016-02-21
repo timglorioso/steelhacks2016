@@ -12,10 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/welcome_string"/>
+        android:text="@string/welcome_string"
+        android:textSize="15sp"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="dispatchImportPictureIntent"
         android:text="@string/button_import" />
