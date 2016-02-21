@@ -27,6 +27,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="net.tglo.colorblind.MainActivity" />
         </activity>
+        <activity
+            android:name=".SelectAreaActivity"
+            android:label="@string/title_activity_select_area"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.tglo.colorblind.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
